@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.TestsMap" >
+	<!-- 查询所有 -->
+	<select id="selects"  resultType="org.java.pojo.Tests">
+  SELECT id,tname,tpassword FROM tests
+  </select>
+  <!-- 根据id查询用户 -->
+  <select id="selectid"  resultType="org.java.pojo.Tests" parameterType="int">
+  SELECT id,tname,tpassword FROM tests WHERE id=#{id}
+  </select>
+  <!-- 新增用户 -->
+  <insert id="insert" parameterType="org.java.pojo.Tests">
+  INSERT INTO tests(id,tname,tpassword) VALUE(null,#{tname},#{tpassword})
+  </insert>
+  <!-- 根据id删除用户 -->
+  <delete id="delete" parameterType="int">
+  DELETE FROM tests  WHERE id=#{id}
+  </delete>
+  	<!-- 根据id修改用户 -->
+	<update id="update" parameterType="org.java.pojo.Tests">
+	UPDATE tests SET tname=#{tname},tpassword=#{tpassword} WHERE id=#{id}
+	</update>
+</mapper>
